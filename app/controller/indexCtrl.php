@@ -3,7 +3,7 @@
  * index controller 
  */
 
-namespace app\ctrl;
+namespace app;
 
 class indexCtrl {
     function __construct ( ){
@@ -11,10 +11,10 @@ class indexCtrl {
     }
     // action index
     public function index (){
-        p('action');
+        p('index action');
     }
     public function list (){
-        $db = new \app\model\model;
+        $db = new \app\model\db;
     }
 }
 

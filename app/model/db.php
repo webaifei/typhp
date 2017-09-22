@@ -3,14 +3,14 @@
  * model class
  */
 
-namespace app;
+namespace app\model;
 
 class db extends \PDO{
     function __construct(){
-        $dsn = 'mysql:host=localhost;dbname=blog';
+        $dsn = 'mysql:host=127.0.0.1;dbname=blog';
 
         $user = 'root';
-        $pwd = 'root';
+        $pwd = '123456';
 
         try{
             parent::__construct($dsn, $user, $pwd);

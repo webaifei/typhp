@@ -3,7 +3,7 @@
  * route
  */
 
-namespace app;
+namespace core;
 
 class route {
 
@@ -19,6 +19,7 @@ class route {
 
         $patharr = explode('/', $path);
 
+        p($patharr);
         // set the controller
         if( isset($patharr[2]) ){
             $this->controller = $patharr[2];
@@ -28,9 +29,7 @@ class route {
             $this->action = $patharr[3];
         }
     }
-    static public function run(){
-
-    }
+    
 }
 
 
