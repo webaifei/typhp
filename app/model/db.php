@@ -4,18 +4,16 @@
  */
 
 namespace app\model;
+// Using Medoo namespace
+use Medoo\Medoo;
 
-class db extends \PDO{
-    function __construct(){
-        $dsn = 'mysql:host=127.0.0.1;dbname=blog';
-
-        $user = 'root';
-        $pwd = '123456';
-
+class db extends Medoo{
+    public function __construct(){
+        $options = CONFIG['db'];
         try{
-            parent::__construct($dsn, $user, $pwd);
-        } catch(\PDOException $e){
-            p( $e->getMessage() );
+            parent::__construct($options);
+        }catch(\PDOException $e){
+            dump($e->getMessage());
         }
     }
 }

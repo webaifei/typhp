@@ -19,7 +19,7 @@ class route {
 
         $patharr = explode('/', $path);
 
-        p($patharr);
+        // p($patharr);
         // set the controller
         if( isset($patharr[2]) ){
             $this->controller = $patharr[2];

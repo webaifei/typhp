@@ -1,0 +1,17 @@
+{
+	"name": "typhp",
+	"description": "php framework example",
+	"keywords": ["php", "framework"],
+	"require": {
+		"monolog/monolog": "*",
+		"symfony/var-dumper": "*",
+		"catfan/Medoo": "^1.4",
+		"twig/twig": "^1.34"
+	},
+	"repositories": {
+		"packagist": {
+			"type": "composer",
+			"url": "https://packagist.phpcomposer.com"
+		}
+	}
+}

@@ -7,7 +7,7 @@
 namespace core;
 
 class AI {
-
+    public $data = [];
     function __construct(){
        
         $this->init();
@@ -26,11 +26,15 @@ class AI {
         define('DEBUG', true);
 
         require_once(ROOT.'/config.php');
+        require_once(ROOT.'/vendor/autoload.php');
+ 
         // config
         define('CONFIG', $config);
+        
         // set debug mode
         if(CONFIG['debug']){
             ini_set('display_error', 'On');
+
         }else{
             ini_set('display_error', 'Off');
         }
@@ -52,6 +56,23 @@ class AI {
             $controller->$action();
         }
     }
+    public function assign ($key , $val){
+        $this->data[$key] = $val;
+    }
+    public function display ($filename){
+        $view = APP. '/views/'. $filename;
+        if( is_file($view) ){
+            $loader = new \Twig_Loader_Filesystem(ROOT. '/app/views');
+            $twig = new \Twig_Environment($loader);
+            $template = $twig->load('index.html');
+            try{
+                echo $template->render($this->data);
+            }catch(\ErrorException $e){
+                dump($e);
+            }
+        }
+    }
+    
     /**
      * 自动加载类
      * @param  string $class 加载的类名
@@ -59,15 +80,13 @@ class AI {
      */
     public static function load( $class ){
         $classPath = str_replace('\\', '/', $class);
-        p($class);
-        
+        // dump($classPath);
         $file = ROOT.'/'.$classPath.'.php';
-
-        p($file);
+        // dump($file);
         if( is_file($file) ){
             require_once( $file );
         }else{
-            p('the class '.$class.' is not existed!');
+            dump('class '.$class .'is not existed!');
             exit();
         }   
     }
